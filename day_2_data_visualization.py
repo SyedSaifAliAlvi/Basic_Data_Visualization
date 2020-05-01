@@ -3,7 +3,7 @@ import seaborn as sns
 import pandas as pd
 import numpy as np
 
-ads = pd.read_csv("Social_Network_Ads.csv")
+ads = pd.read_csv("Ads.csv")
 
 ads.head(5)
 
@@ -23,6 +23,12 @@ sns.pairplot(ads,hue='Purchased',height=5)
 plt.show()
 
 sns.boxplot(x='Purchased',y='EstimatedSalary',data=ads)
+
+sns.jointplot(x='Age',y='EstimatedSalary',data=ads)
+
+sns.regplot(x='Age',y='EstimatedSalary',data=ads,fit_reg=True,order =6)
+
+sns.lmplot(x='Age',y='EstimatedSalary',data=ads,hue='Purchased')
 
 sns.clustermap(ads.corr(),figsize=(7,7),annot=True)
 plt.show()
